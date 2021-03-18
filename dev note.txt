@@ -1,0 +1,56 @@
+OFFSET(男伏!A1,0,MATCH(D2+5,男伏!B1:AT1,0),101,1)
+
+age = D2
+INDEX(array, row_num, [column_num])
+MATCH(lookup_value, lookup_array, [match_type])
+OFFSET(reference, rows, cols, [height], [width])
+
+INDEX(男伏!$A$1:$A$62, row, 1)
+
+INDEX(男伏!$A$1:$A$62, MATCH(AC2, OFFSET(A1, 0, INDEX($A$1:$AT$1, MATCH(D2, 男伏!$A$1:$AT$1, 0)), 62, 1), 0), 1)
+
+
+
+row
+	= MATCH(count, col1:col62, 0)
+	= MATCH(AC2, col1:col62, 0)
+
+count = AC2
+
+
+col1:col62 = OFFSET(男伏!$A$1, 0, col, 62, 1)
+
+col = MATCH(D2, 男伏!$A$1:$AT$1,0)
+
+--------
+IFS(i2=1, m.push.score, I2=2, f.push.score)
+
+m.push.score = 
+index(arr, row, col)
+arr = 男仰!$A$1:$AZ$200
+row = MATCH(af2, 男仰!$A$1:$A$200,0)
+col = MATCH(d2, 男仰!$A$1:$AZ$1,0)
+
+
+
+
+col = INDEX($A$1:$AT$1, MATCH(D2, 男伏!$A$1:$AT$1, 0))
+row 
+	= INDEX($A$1:$A$62, MATCH(AC2, col1:col62, 0))
+	= INDEX($A$1:$A$62, MATCH(AC2, OFFSET($A$1, 0, INDEX(MATCH(D2, 男伏!$A$1:$AT$1, 0)), 62, 0), 0))
+
+col1:col62 = offset(A1, 0, col, 62, 0)
+
+---------------------
+INDEX(array, row_num, [column_num])
+MATCH(lookup_value, lookup_array, [match_type])
+OFFSET(reference, rows, cols, [height], [width])
+
+INDEX(男跑!$A$1:$A$200, row, 1)
+
+row = MATCH(FLOOR.MATH(real_sec / 5) * 5, col_of_age, 0)
+sec = FLOOR(real_sec / 5) * 5
+real_sec = LEFT(AI2, 2)*60 + RIGHT(AI2, 2)
+col_of_age = OFFSET(男跑!$A$1, 0, MATCH(D2, 男跑!$A$1:$AZ$1, 0)-1, 200, 1)
+
+TODO: 級距不是每5sec一個
